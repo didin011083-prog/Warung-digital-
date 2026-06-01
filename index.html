@@ -5,247 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikasi Warung Kenanga 6</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
-            width: 100%;
-            max-width: 480px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            box-sizing: border-box;
-        }
-        h1 {
-            color: #1b4d3e;
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: #2e7d32;
-            font-size: 18px;
-            border-bottom: 2px solid #e8f5e9;
-            padding-bottom: 8px;
-            margin-top: 25px;
-        }
-        .daftar-barang {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .item-barang {
-            background: #fafafa;
-            border: 1px solid #eef2f1;
-            padding: 12px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .item-barang p {
-            margin: 5px 0;
-            font-weight: 600;
-        }
-        button {
-            background-color: #2e7d32;
-            color: white;
-            border: none;
-            padding: 10px 14px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-        }
-        button:active {
-            background-color: #1b5e20;
-        }
-        .btn-wa {
-            background-color: #25d366;
-            font-size: 16px;
-            padding: 14px;
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-            width: 100%;
-            color: white;
-            border: none;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .btn-wa:active {
-            background-color: #128c7e;
-        }
-        .btn-batal {
-            background-color: #d32f2f;
-            margin-top: 10px;
-            padding: 8px;
-            font-size: 12px;
-        }
-        .btn-batal:active {
-            background-color: #c62828;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        th {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            padding: 10px;
-            text-align: left;
-            font-size: 13px;
-        }
-        td {
-            padding: 10px;
-            border-bottom: 1px solid #e0e0e0;
-            font-size: 13px;
-        }
-        .total-bayar {
-            background: #e8f5e9;
-            border-left: 5px solid #2e7d32;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #1b5e20;
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 12px; display: flex; flex-direction: column; align-items: center; }
+        .container { width: 100%; max-width: 480px; background: #ffffff; padding: 20px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { color: #1b4d3e; text-align: center; font-size: 22px; }
+        #pencarian { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .daftar-barang { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .item-barang { background: #fafafa; border: 1px solid #eef2f1; padding: 10px; border-radius: 10px; text-align: center; }
+        button { background-color: #2e7d32; color: white; border: none; padding: 8px; border-radius: 6px; width: 100%; margin-top: 5px; }
+        .btn-wa { background-color: #25d366; width: 100%; padding: 14px; margin-top: 20px; border: none; color: white; font-weight: bold; border-radius: 8px; }
+        table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+        th, td { padding: 8px; border-bottom: 1px solid #eee; text-align: left; font-size: 13px; }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>🏪 Warung Kenanga 6</h1>
-    <h2>Daftar Menu / Barang</h2>
-    <div class="daftar-barang">
-        <div class="item-barang">
-            <p>Kopi Hitam</p>
-            <p style="color:#2e7d32;">Rp 4.000</p>
-            <button onclick="tambahBarang('Kopi Hitam', 4000)">Tambah</button>
-        </div>
-        <div class="item-barang">
-            <p>Gorengan</p>
-            <p style="color:#2e7d32;">Rp 1.500</p>
-            <button onclick="tambahBarang('Gorengan', 1500)">Tambah</button>
-        </div>
-        <div class="item-barang">
-            <p>Beras (1 Kg)</p>
-            <p style="color:#2e7d32;">Rp 15.000</p>
-            <button onclick="tambahBarang('Beras (1 Kg)', 15000)">Tambah</button>
-        </div>
-        <div class="item-barang">
-            <p>Minyak Goreng</p>
-            <p style="color:#2e7d32;">Rp 18.000</p>
-            <button onclick="tambahBarang('Minyak Goreng', 18000)">Tambah</button>
-        </div>
-        <div class="item-barang">
-            <p>Gula Pasir</p>
-            <p style="color:#2e7d32;">Rp 16.000</p>
-            <button onclick="tambahBarang('Gula Pasir', 16000)">Tambah</button>
-        </div>
-        <div class="item-barang">
-            <p>Sabun Mandi</p>
-            <p style="color:#2e7d32;">Rp 4.500</p>
-            <button onclick="tambahBarang('Sabun Mandi', 4500)">Tambah</button>
-        </div>
-    </div>
-    <h2>Keranjang Belanja</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th>Qty</th>
-                <th>Harga</th>
-            </tr>
-        </thead>
-        <tbody id="isi-keranjang">
-            <tr>
-                <td colspan="3" style="text-align:center; color:#999;">Belum ada belanjaan</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="total-bayar">
-        <span>TOTAL:</span>
-        <span id="total-harga">Rp 0</span>
-    </div>
+    <input type="text" id="pencarian" placeholder="🔍 Cari nama barang..." onkeyup="filterBarang()">
     
-    <button class="btn-wa" onclick="kirimWhatsApp()">💬 Kirim Pesanan ke WhatsApp</button>
-    <button class="btn-batal" onclick="resetKeranjang()">Kosongkan Keranjang</button>
+    <div class="daftar-barang" id="list-barang">
+        <div class="item-barang" data-nama="Kopi Hitam"><p>Kopi Hitam</p><p>Rp 4.000</p><button onclick="tambahBarang('Kopi Hitam', 4000)">Tambah</button></div>
+        <div class="item-barang" data-nama="Gorengan"><p>Gorengan</p><p>Rp 1.500</p><button onclick="tambahBarang('Gorengan', 1500)">Tambah</button></div>
+        <div class="item-barang" data-nama="Beras"><p>Beras (1 Kg)</p><p>Rp 15.000</p><button onclick="tambahBarang('Beras (1 Kg)', 15000)">Tambah</button></div>
+        <div class="item-barang" data-nama="Minyak"><p>Minyak</p><p>Rp 18.000</p><button onclick="tambahBarang('Minyak Goreng', 18000)">Tambah</button></div>
+    </div>
+
+    <h2>Keranjang</h2>
+    <table><tbody id="isi-keranjang"><tr><td>Belum ada barang</td></tr></tbody></table>
+    <button class="btn-wa" onclick="kirimWhatsApp()">💬 Kirim ke WhatsApp</button>
 </div>
+
 <script>
+    function filterBarang() {
+        let input = document.getElementById('pencarian').value.toLowerCase();
+        let items = document.getElementsByClassName('item-barang');
+        for (let i = 0; i < items.length; i++) {
+            let nama = items[i].getAttribute('data-nama').toLowerCase();
+            items[i].style.display = nama.includes(input) ? "" : "none";
+        }
+    }
+    
     let keranjang = [];
-    let total = 0;
-
     function tambahBarang(nama, harga) {
-        let index = keranjang.findIndex(item => item.nama === nama);
-        if (index > -1) {
-            keranjang[index].qty++;
-        } else {
-            keranjang.push({ nama: nama, qty: 1, harga: harga });
-        }
-        total += harga;
-        updateTampilan();
-    }
-
-    function updateTampilan() {
-        let tbody = document.getElementById("isi-keranjang");
-        let totalSpan = document.getElementById("total-harga");
-        
-        if (keranjang.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#999;">Belum ada belanjaan</td></tr>`;
-            totalSpan.innerText = "Rp 0";
-            return;
-        }
-
-        tbody.innerHTML = "";
-        keranjang.forEach(item => {
-            let tr = document.createElement("tr");
-            tr.innerHTML = `
-                <td>${item.nama}</td>
-                <td>${item.qty}x</td>
-                <td>Rp ${(item.harga * item.qty).toLocaleString('id-ID')}</td>
-            `;
-            tbody.appendChild(tr);
-        });
-
-        totalSpan.innerText = "Rp " + total.toLocaleString('id-ID');
-    }
-
-    function resetKeranjang() {
-        keranjang = [];
-        total = 0;
-        updateTampilan();
+        keranjang.push({ nama, harga });
+        alert(nama + " ditambahkan!");
+        document.getElementById("isi-keranjang").innerHTML = keranjang.map(i => `<tr><td>${i.nama}</td><td>Rp ${i.harga}</td></tr>`).join('');
     }
 
     function kirimWhatsApp() {
-        if (keranjang.length === 0) {
-            alert("Keranjang masih kosong, Pak! Silakan pilih barang dulu.");
-            return;
-        }
-
-        let nomorWA = "6287784542093";
-        let teks = "🛒 *PESANAN BARU - WARUNG KENANGA 6*\n\n";
-        
-        keranjang.forEach(item => {
-            teks += `• ${item.nama} (${item.qty}x) = Rp ${(item.harga * item.qty).toLocaleString('id-ID')}\n`;
-        });
-        
-        teks += `\n💰 *TOTAL BAYAR: Rp ${total.toLocaleString('id-ID')}*`;
-        
-        // Ditambahkan d=Date.now() agar link selalu dianggap baru oleh Chrome (Anti-Cache)
-        let linkWA = "https://api.whatsapp.com/send?phone=" + nomorWA + "&text=" + encodeURIComponent(teks) + "&d=" + Date.now();
-        window.open(linkWA, '_blank');
+        let teks = "Pesanan saya: " + keranjang.map(i => i.nama).join(", ");
+        window.open("https://api.whatsapp.com/send?phone=6287784542093&text=" + encodeURIComponent(teks) + "&d=" + Date.now());
     }
 </script>
 </body>
