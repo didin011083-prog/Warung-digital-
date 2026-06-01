@@ -68,9 +68,21 @@
         button:active {
             background-color: #1b5e20;
         }
+        .btn-wa {
+            background-color: #25d366;
+            font-size: 16px;
+            padding: 14px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        .btn-wa:active {
+            background-color: #128c7e;
+        }
         .btn-batal {
             background-color: #d32f2f;
             margin-top: 10px;
+            padding: 8px;
+            font-size: 12px;
         }
         .btn-batal:active {
             background-color: #c62828;
@@ -161,6 +173,8 @@
         <span>TOTAL:</span>
         <span id="total-harga">Rp 0</span>
     </div>
+    
+    <button class="btn-wa" onclick="kirimWhatsApp()">💬 Kirim Pesanan ke WhatsApp</button>
     <button class="btn-batal" onclick="resetKeranjang()">Kosongkan Keranjang</button>
 </div>
 <script>
@@ -206,6 +220,25 @@
         keranjang = [];
         total = 0;
         updateTampilan();
+    }
+
+    function kirimWhatsApp() {
+        if (keranjang.length === 0) {
+            alert("Keranjang masih kosong, Pak! Silakan pilih barang dulu.");
+            return;
+        }
+
+        let nomorWA = "628xxxxxxxxxx"; // GANTI DENGAN NOMOR WA WARUNG BAPAK (awali dengan 62, jangan pakai angka 0)
+        let teks = "🛒 *PESANAN BARU - WARUNG KENANGA 6*\n\n";
+        
+        keranjang.forEach(item => {
+            teks += `• ${item.nama} (${item.qty}x) = Rp ${(item.harga * item.qty).toLocaleString('id-ID')}\n`;
+        });
+        
+        teks += `\n💰 *TOTAL BAYAR: Rp ${total.toLocaleString('id-ID')}*`;
+        
+        let linkWA = "https://api.whatsapp.com/send?phone=" + nomorWA + "&text=" + encodeURIComponent(teks);
+        window.open(linkWA, '_blank');
     }
 </script>
 </body>
