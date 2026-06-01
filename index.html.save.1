@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html> <html lang="id"> <head> 
+    <meta charset="UTF-8"> <meta 
+    name="viewport" 
+    content="width=device-width, 
+    initial-scale=1.0"> <title>Aplikasi 
+    Pertamaku</title> <style>
+        /* Ini adalah CSS untuk menghias 
+        aplikasi */ body {
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #f0f0f0; 
+            padding: 50px;
+        }
+        button { padding: 10px 20px; 
+            font-size: 16px; 
+            background-color: #007BFF; 
+            color: white; border: none; 
+            border-radius: 5px; cursor: 
+            pointer;
+        }
+    </style> </head> <body> <h1>Halo Dunia! 
+    👋</h1> <p>Ini adalah aplikasi 
+    sederhana pertamaku yang dibuat lewat 
+    Acode.</p>
+    
+    <button onclick="sapaUser()">Klik 
+    Saya!</button> <script>
+        /* Ini adalah JavaScript untuk 
+        logika aplikasi */ function 
+        sapaUser() {
+            alert("Keren! Kamu berhasil 
+            menjalankan kode pertamamu!");
+        }
+    </script> </body> </html> <!DOCTYPE 
+html> <html lang="id"> <head>
+    <meta charset="UTF-8"> <meta 
+    name="viewport" 
+    content="width=device-width, 
+    initial-scale=1.0"> <title>Warung 
+    Online Sederhana</title> <style>
+        body { font-family: 'Segoe UI', 
+            Tahoma, Geneva, Verdana, 
+            sans-serif; margin: 0; padding: 
+            0; background-color: #f4f7f6; 
+            color: #333;
+        }
+        header { background-color: #27ae60; 
+            color: white; text-align: 
+            center; padding: 20px;
+        }
+        .container { padding: 20px; 
+            max-width: 600px; margin: auto;
+        }
+        /* Style untuk Daftar Produk */ 
+        .produk-card {
+            background: white; 
+            border-radius: 8px; padding: 
+            15px; margin-bottom: 15px; 
+            box-shadow: 0 2px 5px 
+            rgba(0,0,0,0.1); display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .info-produk h3 { margin: 0 0 5px 
+            0;
+        }
+        .info-produk p { margin: 0; color: 
+            #27ae60;
+            font-weight: bold;
+        }
+        .btn-beli { background-color: 
+            #27ae60;
+            color: white; border: none; 
+            padding: 8px 15px; 
+            border-radius: 5px; cursor: 
+            pointer;
+        }
+        .btn-beli:active { 
+            background-color: #219653;
+        }
+        /* Style untuk Keranjang Belanja */ 
+        .keranjang-box {
+            background: #e8f5e9; border: 
+            2px dashed #27ae60; 
+            border-radius: 8px; padding: 
+            15px; margin-top: 25px;
+        }
+        .total-bayar { font-size: 18px; 
+            font-weight: bold; display: 
+            flex; justify-content: 
+            space-between; border-top: 1px 
+            solid #ccc; padding-top: 10px; 
+            margin-top: 10px;
+        }
+        .btn-reset { background-color: 
+            #e74c3c;
+            color: white; border: none; 
+            padding: 5px 10px; 
+            border-radius: 3px; cursor: 
+            pointer; font-size: 12px;
+        }
+    </style> </head> <body> <header> <h1>🏪 
+        Warung Digital</h1> <p>Belanja 
+        Instan dari Rumah</p>
+    </header> <div class="container"> 
+        <h2>Menu Produk</h2>
+        
+        <!-- Produk 1 --> <div 
+        class="produk-card">
+            <div class="info-produk"> 
+                <h3>Beras Premium 1kg</h3> 
+                <p>Rp 15.000</p>
+            </div> <button class="btn-beli" 
+            onclick="tambahKeKeranjang('Beras 
+            Premium 1kg', 15000)">+ 
+            Beli</button>
+        </div> <!-- Produk 2 --> <div 
+        class="produk-card">
+            <div class="info-produk"> 
+                <h3>Minyak Goreng 1L</h3> 
+                <p>Rp 18.000</p>
+            </div> <button class="btn-beli" 
+            onclick="tambahKeKeranjang('Minyak 
+            Goreng 1L', 18000)">+ 
+            Beli</button>
+        </div> <!-- Produk 3 --> <div 
+        class="produk-card">
+            <div class="info-produk"> 
+                <h3>Gula Pasir 1kg</h3> 
+                <p>Rp 16.000</p>
+            </div> <button class="btn-beli" 
+            onclick="tambahKeKeranjang('Gula 
+            Pasir 1kg', 16000)">+ 
+            Beli</button>
+        </div> <!-- Keranjang Belanja --> 
+        <div class="keranjang-box">
+            <div style="display: flex; 
+            justify-content: space-between; 
+            align-items: center;">
+                <h3>🛒 Keranjang 
+                Belanja</h3> <button 
+                class="btn-reset" 
+                onclick="kosongkanKeranjang()">Kosongkan</button>
+            </div> <ul id="daftar-belanja"> 
+                <!-- Item yang dibeli akan 
+                muncul di sini otomatis --> 
+                <li 
+                id="pemberitahuan-kosong">Keranjang 
+                masih kosong.</li>
+            </ul> <div class="total-bayar"> 
+                <span>Total:</span> <span 
+                id="total-harga">Rp 
+                0</span>
+            </div> </div> </div> <!-- 
+    Logika Aplikasi (JavaScript) --> 
+    <script>
+        let totalBelanja = 0; let 
+        jumlahItem = 0; function 
+        tambahKeKeranjang(namaProduk, 
+        harga) {
+            // Hapus tulisan "Keranjang 
+            // masih kosong" jika ada item 
+            // pertama masuk
+            const pesanKosong = 
+            document.getElementById('pemberitahuan-kosong'); 
+            if (pesanKosong) {
+                pesanKosong.remove();
+            }
+            // Tambah item ke dalam daftar 
+            // <ul>
+            const daftar = 
+            document.getElementById('daftar-belanja'); 
+            const itemBaru = 
+            document.createElement('li'); 
+            itemBaru.textContent = 
+            `${namaProduk} - Rp 
+            ${harga.toLocaleString('id-ID')}`; 
+            daftar.appendChild(itemBaru);
+            // Hitung total harga
+            totalBelanja += harga; 
+            document.getElementById('total-harga').textContent 
+            = `Rp 
+            ${totalBelanja.toLocaleString('id-ID')}`;
+        }
+        function kosongkanKeranjang() {
+            // Kembalikan ke setelan awal
+            document.getElementById('daftar-belanja').innerHTML 
+            = '<li 
+            id="pemberitahuan-kosong">Keranjang 
+            masih kosong.</li>'; 
+            totalBelanja = 0; 
+            document.getElementById('total-harga').textContent 
+            = "Rp 0";
+        }
+    </script> </body> </html> <div 
+class="keranjang-container">
+    <h2>Keranjang Belanja Anda</h2> <div 
+    id="daftar-keranjang">
+        </div> <div class="total-bayar"> 
+        <strong>Total: Rp <span 
+        id="total-harga">0</span></strong>
+    </div>
+    
+    <button 
+    onclick="kirimPesananWhatsApp()" 
+    class="btn-checkout-wa">
+        <img 
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+        alt="WA" width="20"> Kirim Pesanan 
+        via WhatsApp
+    </button> </div> <a 
+href="https://wa.me/6287784542093" 
+class="btn-whatsapp" target="_blank">
+  Hubungi via WhatsApp </a> cat 
+/sdcard/Documents/index.html > index.html 
+cp ~/../..//sdcard/Documents/index.html . 
+nano index.html
+
+<!DOCTYPE html> <html lang="id"> <head> 
+    <meta charset="UTF-8"> <meta 
+    name="viewport" 
+    content="width=device-width, 
+    initial-scale=1.0"> <title>Aplikasi 
+    Pertamaku</title> <style>
+        /* Ini adalah CSS untuk menghias 
+        aplikasi */ body {
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #f0f0f0; 
+            padding: 50px;
+        }
+        button { padding: 10px 20px; 
+            font-size: 16px; 
+            background-color: #007BFF; 
+            color: white; border: none; 
+            border-radius: 5px; cursor: 
+            pointer;
+        }
+    </style> </head> <body> <h1>Halo Dunia! 
+    👋</h1> <p>Ini adalah aplikasi 
+    sederhana pertamaku yang dibuat lewat 
+    Acode.</p>
+    
+    <button onclick="sapaUser()">Klik 
+    Saya!</button> <script>
+        /* Ini adalah JavaScript untuk 
+        logika aplikasi */ function 
+        sapaUser() {
+            alert("Keren! Kamu berhasil 
+            menjalankan kode pertamamu!");
+        }
+    </script> </body> </html> <!DOCTYPE 
+html> <html lang="id"> <head>
+    <meta charset="UTF-8"> <meta 
+    name="viewport" 
+    content="width=device-width, 
+    initial-scale=1.0"> <title>Warung 
+    Online Sederhana</title> <style>
+        body { font-family: 'Segoe UI', 
+            Tahoma, Geneva, Verdana, 
+            sans-serif; margin: 0; padding: 
+            0; background-color: #f4f7f6; 
+            color: #333;
+        }
+        header { background-color: #27ae60; 
+            color: white; text-align: 
+            center; padding: 20px;
+        }
+        .container { padding: 20px; 
+            max-width: 600px; margin: auto;
+        }
+        /* Style untuk Daftar Produk */ 
+        .produk-card {
+            background: white; 
+            border-radius: 8px; padding: 
+            15px; margin-bottom: 15px; 
+            box-shadow: 0 2px 5px 
+            rgba(0,0,0,0.1); display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .info-produk h3 { margin: 0 0 5px 
+            0;
+        }
+        .info-produk p { margin: 0; color: 
+            #27ae60;
+            font-weight: bold;
+        }
+        .btn-beli { background-color: 
+            #27ae60;
+            color: white; border: none; 
+            padding: 8px 15px; 
+            border-radius: 5px; cursor: 
+            pointer;
+        }
+        .btn-beli:active { 
+            background-color: #219653;
+        }
+        /* Style untuk Keranjang Belanja */ 
+        .keranjang-box {
+            background: #e8f5e9; border: 
+            2px dashed #27ae60; 
+            border-radius: 8px; padding: 
+            15px; margin-top: 25px;
+        }
+        .total-bayar { font-size: 18px; 
+            font-weight: bold; display: 
+            flex; justify-content: 
+            space-between; border-top: 1px 
+            solid #ccc; padding-top: 10px; 
+            margin-top: 10px;
+        }
+        .btn-reset { background-color: 
+            #e74c3c;
+            color: white; border: none; 
+            padding: 5px 10px; 
+            border-radius: 3px; cursor: 
+            pointer; font-size: 12px;
+        }
+    </style> </head> <body> <header> <h1>🏪 
+        Warung Digital</h1> <p>Belanja 
+        Instan dari Rumah</p>
+    </header> <div class="container"> 
+        <h2>Menu Produk</h2>
+        
+        <!-- Produk 1 --> <div 
+        class="produk-card">
+            <div class="info-produk"> 
+                <h3>Beras Premium 1kg</h3> 
+                <p>Rp 15.000</p>
+            </div> <button class="btn-beli" 
+            onclick="tambahKeKeranjang('Beras 
+            Premium 1kg', 15000)">+ 
+            Beli</button>
+        </div> <!-- Produk 2 --> <div 
+        class="produk-card">
+            <div class="info-produk"> 
+                <h3>Minyak Goreng 1L</h3> 
+                <p>Rp 18.000</p>
+            </div> <button class="btn-beli" 
+            onclick="tambahKeKeranjang('Minyak 
+            Goreng 1L', 18000)">+ 
+            Beli</button>
+        </div> <!-- Produk 3 --> <div 
+        class="produk-card">
+            <div class="info-produk"> 
+                <h3>Gula Pasir 1kg</h3> 
+                <p>Rp 16.000</p>
+            </div> <button class="btn-beli" 
+            onclick="tambahKeKeranjang('Gula 
+            Pasir 1kg', 16000)">+ 
+            Beli</button>
+        </div> <!-- Keranjang Belanja --> 
+        <div class="keranjang-box">
+            <div style="display: flex; 
+            justify-content: space-between; 
+            align-items: center;">
+                <h3>🛒 Keranjang 
+                Belanja</h3> <button 
+                class="btn-reset" 
+                onclick="kosongkanKeranjang()">Kosongkan</button>
+            </div> <ul id="daftar-belanja"> 
+                <!-- Item yang dibeli akan 
+                muncul di sini otomatis --> 
+                <li 
+                id="pemberitahuan-kosong">Keranjang 
+                masih kosong.</li>
+            </ul> <div class="total-bayar"> 
+                <span>Total:</span> <span 
+                id="total-harga">Rp 
+                0</span>
+            </div> </div> </div> <!-- 
+    Logika Aplikasi (JavaScript) --> 
+    <script>
+        let totalBelanja = 0; let 
+        jumlahItem = 0; function 
+        tambahKeKeranjang(namaProduk, 
+        harga) {
+            // Hapus tulisan "Keranjang 
+            // masih kosong" jika ada item 
+            // pertama masuk
+            const pesanKosong = 
+            document.getElementById('pemberitahuan-kosong'); 
+            if (pesanKosong) {
+                pesanKosong.remove();
+            }
+            // Tambah item ke dalam daftar 
+            // <ul>
+            const daftar = 
+            document.getElementById('daftar-belanja'); 
+            const itemBaru = 
+            document.createElement('li'); 
+            itemBaru.textContent = 
+            `${namaProduk} - Rp 
+            ${harga.toLocaleString('id-ID')}`; 
+            daftar.appendChild(itemBaru);
+            // Hitung total harga
+            totalBelanja += harga; 
+            document.getElementById('total-harga').textContent 
+            = `Rp 
+            ${totalBelanja.toLocaleString('id-ID')}`;
+        }
+        function kosongkanKeranjang() {
+            // Kembalikan ke setelan awal
+            document.getElementById('daftar-belanja').innerHTML 
+            = '<li 
+            id="pemberitahuan-kosong">Keranjang 
+            masih kosong.</li>'; 
+            totalBelanja = 0; 
+            document.getElementById('total-harga').textContent 
+            = "Rp 0";
+        }
+    </script> </body> </html> <div 
+class="keranjang-container">
+    <h2>Keranjang Belanja Anda</h2> <div 
+    id="daftar-keranjang">
+        </div> <div class="total-bayar"> 
+        <strong>Total: Rp <span 
+        id="total-harga">0</span></strong>
+    </div>
+    
+    <button 
+    onclick="kirimPesananWhatsApp()" 
+    class="btn-checkout-wa">
+        <img 
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+        alt="WA" width="20"> Kirim Pesanan 
+        via WhatsApp
+    </button> </div> <a 
+href="https://wa.me/6287784542093" 
+class="btn-whatsapp" target="_blank">
+  Hubungi via WhatsApp </a>
