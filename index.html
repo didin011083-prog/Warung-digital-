@@ -243,7 +243,8 @@
         
         teks += `\n💰 *TOTAL BAYAR: Rp ${total.toLocaleString('id-ID')}*`;
         
-        let linkWA = "https://api.whatsapp.com/send?phone=" + nomorWA + "&text=" + encodeURIComponent(teks);
+        // Ditambahkan d=Date.now() agar link selalu dianggap baru oleh Chrome (Anti-Cache)
+        let linkWA = "https://api.whatsapp.com/send?phone=" + nomorWA + "&text=" + encodeURIComponent(teks) + "&d=" + Date.now();
         window.open(linkWA, '_blank');
     }
 </script>
