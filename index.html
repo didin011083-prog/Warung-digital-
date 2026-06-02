@@ -22,16 +22,8 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             box-sizing: border-box;
         }
-        h1 {
-            color: #1b4d3e;
-            text-align: center;
-            font-size: 22px;
-        }
-        h2 {
-            color: #2e7d32;
-            font-size: 16px;
-            margin-top: 20px;
-        }
+        h1 { color: #1b4d3e; text-align: center; font-size: 22px; }
+        h2 { color: #2e7d32; font-size: 16px; margin-top: 20px; }
         #pencarian {
             width: 100%;
             padding: 12px;
@@ -41,11 +33,7 @@
             box-sizing: border-box;
             font-size: 15px;
         }
-        .daftar-barang {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
+        .daftar-barang { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .item-barang {
             background: #fafafa;
             border: 1px solid #eef2f1;
@@ -53,10 +41,7 @@
             border-radius: 10px;
             text-align: center;
         }
-        .item-barang p {
-            margin: 5px 0;
-            font-weight: bold;
-        }
+        .item-barang p { margin: 5px 0; font-weight: bold; }
         .btn-tambah {
             background-color: #2e7d32;
             color: white;
@@ -81,110 +66,46 @@
             cursor: pointer;
         }
         .btn-batal {
-            background-color: #d32f2f;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 8px;
-            margin-top: 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            cursor: pointer;
+            background-color: #d32f2f; color: white; border: none;
+            width: 100%; padding: 8px; margin-top: 10px;
+            border-radius: 6px; font-size: 12px; cursor: pointer;
         }
-        table {
-            width: 100%;
-            margin-top: 10px;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            border-bottom: 1px solid #eee;
-            text-align: left;
-            font-size: 13px;
-        }
-        th {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-        }
+        table { width: 100%; margin-top: 10px; border-collapse: collapse; }
+        th, td { padding: 8px; border-bottom: 1px solid #eee; text-align: left; font-size: 13px; }
+        th { background-color: #e8f5e9; color: #2e7d32; }
         .total-box {
-            background: #e8f5e9;
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-weight: bold;
-            color: #1b5e20;
-            display: flex;
-            justify-content: space-between;
+            background: #e8f5e9; padding: 12px; border-radius: 6px;
+            margin-top: 10px; font-weight: bold; color: #1b5e20;
+            display: flex; justify-content: space-between;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>🏪 Warung Kenanga 6</h1>
-    
-    <!-- Kolom Pencarian -->
     <input type="text" id="pencarian" placeholder="🔍 Cari nama barang..." onkeyup="filterBarang()">
     
     <div class="daftar-barang" id="list-barang">
-        <div class="item-barang" data-nama="kopi hitam">
-            <p>Kopi Hitam</p>
-            <p style="color:#2e7d32;">Rp 4.000</p>
-            <button class="btn-tambah" onclick="tambahBarang('Kopi Hitam', 4000)">Tambah</button>
-        </div>
-        <div class="item-barang" data-nama="gorengan">
-            <p>Gorengan</p>
-            <p style="color:#2e7d32;">Rp 1.500</p>
-            <button class="btn-tambah" onclick="tambahBarang('Gorengan', 1500)">Tambah</button>
-        </div>
-        <div class="item-barang" data-nama="beras 1 kg">
-            <p>Beras (1 Kg)</p>
-            <p style="color:#2e7d32;">Rp 15.000</p>
-            <button class="btn-tambah" onclick="tambahBarang('Beras (1 Kg)', 15000)">Tambah</button>
-        </div>
-        <div class="item-barang" data-nama="minyak goreng">
-            <p>Minyak Goreng</p>
-            <p style="color:#2e7d32;">Rp 18.000</p>
-            <button class="btn-tambah" onclick="tambahBarang('Minyak Goreng', 18000)">Tambah</button>
-        </div>
-        <div class="item-barang" data-nama="gula pasir">
-            <p>Gula Pasir</p>
-            <p style="color:#2e7d32;">Rp 16.000</p>
-            <button class="btn-tambah" onclick="tambahBarang('Gula Pasir', 16000)">Tambah</button>
-        </div>
-        <div class="item-barang" data-nama="sabun mandi">
-            <p>Sabun Mandi</p>
-            <p style="color:#2e7d32;">Rp 4.500</p>
-            <button class="btn-tambah" onclick="tambahBarang('Sabun Mandi', 4500)">Tambah</button>
-        </div>
+        <div class="item-barang" data-nama="kopi hitam"><p>Kopi Hitam</p><p style="color:#2e7d32;">Rp 4.000</p><button class="btn-tambah" onclick="tambahBarang('Kopi Hitam', 4000)">Tambah</button></div>
+        <div class="item-barang" data-nama="gorengan"><p>Gorengan</p><p style="color:#2e7d32;">Rp 1.500</p><button class="btn-tambah" onclick="tambahBarang('Gorengan', 1500)">Tambah</button></div>
+        <div class="item-barang" data-nama="beras 1 kg"><p>Beras (1 Kg)</p><p style="color:#2e7d32;">Rp 15.000</p><button class="btn-tambah" onclick="tambahBarang('Beras (1 Kg)', 15000)">Tambah</button></div>
+        <div class="item-barang" data-nama="minyak goreng"><p>Minyak Goreng</p><p style="color:#2e7d32;">Rp 18.000</p><button class="btn-tambah" onclick="tambahBarang('Minyak Goreng', 18000)">Tambah</button></div>
+        <div class="item-barang" data-nama="gula pasir"><p>Gula Pasir</p><p style="color:#2e7d32;">Rp 16.000</p><button class="btn-tambah" onclick="tambahBarang('Gula Pasir', 16000)">Tambah</button></div>
+        <div class="item-barang" data-nama="sabun mandi"><p>Sabun Mandi</p><p style="color:#2e7d32;">Rp 4.500</p><button class="btn-tambah" onclick="tambahBarang('Sabun Mandi', 4500)">Tambah</button></div>
     </div>
 
     <h2>Keranjang Belanja</h2>
     <table>
-        <thead>
-            <tr>
-                <th>Nama Barang</th>
-                <th>Jumlah</th>
-                <th>Harga</th>
-            </tr>
-        </thead>
-        <tbody id="isi-keranjang">
-            <tr>
-                <td colspan="3" style="text-align:center; color:#999;">Belum ada barang</td>
-            </tr>
-        </tbody>
+        <thead><tr><th>Nama Barang</th><th>Jumlah</th><th>Harga</th></tr></thead>
+        <tbody id="isi-keranjang"><tr><td colspan="3" style="text-align:center; color:#999;">Belum ada barang</td></tr></tbody>
     </table>
     
-    <div class="total-box">
-        <span>TOTAL BAYAR:</span>
-        <span id="total-harga">Rp 0</span>
-    </div>
-    
+    <div class="total-box"><span>TOTAL BAYAR:</span><span id="total-harga">Rp 0</span></div>
     <button class="btn-wa" onclick="kirimWhatsApp()">💬 Kirim ke WhatsApp</button>
     <button class="btn-batal" onclick="kosongkanKeranjang()">Kosongkan Keranjang</button>
 </div>
 
 <script>
-    // Fungsi Menyaring Pencarian Barang
     function filterBarang() {
         let input = document.getElementById('pencarian').value.toLowerCase();
         let items = document.getElementsByClassName('item-barang');
@@ -194,63 +115,31 @@
         }
     }
     
-    let keranjang = [];
-    let total = 0;
-
+    let keranjang = []; let total = 0;
     function tambahBarang(nama, harga) {
         let index = keranjang.findIndex(item => item.nama === nama);
-        if (index > -1) {
-            keranjang[index].qty++;
-        } else {
-            keranjang.push({ nama: nama, qty: 1, harga: harga });
-        }
-        total += harga;
-        updateTampilan();
+        if (index > -1) { keranjang[index].qty++; } else { keranjang.push({ nama: nama, qty: 1, harga: harga }); }
+        total += harga; updateTampilan();
     }
-
     function updateTampilan() {
-        let tbody = document.getElementById("isi-keranjang");
-        let totalSpan = document.getElementById("total-harga");
-        
-        if (keranjang.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#999;">Belum ada barang</td></tr>`;
-            totalSpan.innerText = "Rp 0";
-            return;
-        }
-
+        let tbody = document.getElementById("isi-keranjang"); let totalSpan = document.getElementById("total-harga");
+        if (keranjang.length === 0) { tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#999;">Belum ada barang</td></tr>`; totalSpan.innerText = "Rp 0"; return; }
         tbody.innerHTML = "";
         keranjang.forEach(item => {
             let tr = document.createElement("tr");
-            tr.innerHTML = `
-                <td>${item.nama}</td>
-                <td>${item.qty}x</td>
-                <td>Rp ${(item.harga * item.qty).toLocaleString('id-ID')}</td>
-            `;
+            tr.innerHTML = `<td>${item.nama}</td><td>${item.qty}x</td><td>Rp ${(item.harga * item.qty).toLocaleString('id-ID')}</td>`;
             tbody.appendChild(tr);
         });
-
         totalSpan.innerText = "Rp " + total.toLocaleString('id-ID');
     }
-
-    function kosongkanKeranjang() {
-        keranjang = [];
-        total = 0;
-        updateTampilan();
-    }
-
+    function kosongkanKeranjang() { keranjang = []; total = 0; updateTampilan(); }
     function kirimWhatsApp() {
-        if (keranjang.length === 0) {
-            alert("Keranjang belanja masih kosong, Pak!");
-            return;
-        }
-
+        if (keranjang.length === 0) { alert("Keranjang belanja masih kosong, Pak!"); return; }
         let teks = "🛒 *PESANAN BARU - WARUNG KENANGA 6*\n\n";
-        keranjang.forEach(item => {
-            teks += `• ${item.nama} (${item.qty}x) = Rp ${(item.harga * item.qty).toLocaleString('id-ID')}\n`;
-        });
+        keranjang.forEach(item => { teks += `• ${item.nama} (${item.qty}x) = Rp ${(item.harga * item.qty).toLocaleString('id-ID')}\n`; });
         teks += `\n💰 *TOTAL BAYAR: Rp ${total.toLocaleString('id-ID')}*`;
-
-        window.open("https://api.whatsapp.com/send?phone=6287784542093&text=" + encodeURIComponent(teks) + "&d=" + Date.now());
+        
+        window.open("https://api.whatsapp.com/send?phone=6287784542093&text=" + encodeURIComponent(teks));
     }
 </script>
 </body>
