@@ -30,9 +30,7 @@
     <div class="container">
         <h1>🏪 Warung Kenanga 6</h1>
         
-        <div class="product-grid" id="product-list">
-            <!-- Produk akan dimuat lewat JS -->
-        </div>
+        <div class="product-grid" id="product-list"></div>
 
         <h3>Keranjang Belanja</h3>
         <table>
@@ -42,7 +40,7 @@
                     <th>Jml</th>
                     <th>Harga</th>
                 </tr>
-            зно
+            </thead>
             <tbody id="cart-table-body">
                 <tr><td colspan="3" style="text-align: center;">Keranjang kosong</td></tr>
             </tbody>
@@ -53,7 +51,7 @@
         <div class="payment-section">
             <label for="payment-method"><b>Metode Pembayaran:</b></label>
             <select id="payment-method">
-                <option value="Cash / Bayar di Tempat">Cash / Bayar di Tempat</option>
+                <option value="Cash (Bayar di Tempat)">Cash (Bayar di Tempat)</option>
                 <option value="Transfer Bank">Transfer Bank</option>
             </select>
         </div>
@@ -128,17 +126,18 @@
             }
 
             const paymentMethod = document.getElementById('payment-method').value;
-            let message = "Halo Warung Kenanga 6, saya ingin memesan:\n\n";
+            let message = "🛒 *PESANAN BARU - WARUNG KENANGA 6*\n\n";
             let total = 0;
 
             cart.forEach(item => {
                 let subtotal = item.price * item.qty;
                 total += subtotal;
-                message += `- ${item.name} (${item.qty}x) : Rp ${subtotal.toLocaleString('id-ID')}\n`;
+                message += `• ${item.name} (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}\n`;
             });
 
-            message += `\n*TOTAL BAYAR: Rp ${total.toLocaleString('id-ID')}*`;
-            message += `\n*Metode Pembayaran: ${paymentMethod}*`;
+            message += `\n💰 *TOTAL BAYAR: Rp ${total.toLocaleString('id-ID')}*`;
+            message += `\n📌 *Metode Pembayaran: ${paymentMethod}*`;
+            message += `\n\nMohon segera diproses ya, terima kasih!`;
 
             const phone = "6287784542093";
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
